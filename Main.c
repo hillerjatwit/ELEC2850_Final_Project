@@ -32,10 +32,10 @@ int main() {
 
     //starting coordinates for left paddle
     short player1_color = 0x1CE0;
-    int player1_x1 = 10;
-    int player1_y1 = 124;
-    int player1_x2 = player1_x1 + 10 - 1;
-    int player1_y2 = player1_y1 + 50 - 1;
+    int left_x1 = 10;
+    int left_y1 = 124;
+    int left_x2 = left_x1 + 10 - 1;
+    int left_y2 = left_y1 + 50 - 1;
 
 
 
@@ -43,15 +43,39 @@ int main() {
 
     //y inc, change in the y parameter per frame
     int ball_inc = 0;
+    int ball_x_inc = 0;
+
+
+    while (1) {
+
+        //speed the ball will move over the x axis
+        int ball_x_speed = 1;
+
+        //hits right paddle, switch x direction, and to the x direction speed
+        if (ballx2 == 300 && ((bally1 > right_y1) || (bally2 < right_y2))) {
+            ball_x_speed = -ball_x_speed;
+            ball_x_inc = -ball_x_inc;
+
+            ball_x_speed = ball_x_inc;
+            ball_x_inc++;
+        }
+
+        //hits left paddle, switch x direction, and adds to the x direction speed
+        else if (ballx2 == 20 && ((bally1 > left_y1) || (bally2 < left_y2))) {
+            ball_x_speed = -ball_x_speed;
+            ball_x_inc = -ball_x_inc;
+
+            ball_x_speed = ball_x_inc;
+            ball_x_inc++;
+        }
 
 
 
 
 
-
+    }
 }
-
-void VGAbuild(int x1, int y1, int x2, int y2, short pixel_color) {
+    void VGAbuild(int x1, int y1, int x2, int y2, short pixel_color) {
 
     int offset, row, col;
     volatile short* pixel_buffer = (short*)0x08000000;    //VGA pixel buffer 
