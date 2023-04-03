@@ -3,6 +3,11 @@
 void VGAbuild(int, int, int, int, short);
 void clearScreen();
 
+volatile int pixel_buffer_start = FPGA_ONCHIP_BASE;
+
+int resolution_x = 320;
+int resolution_y = 240;
+
 int main() {
 
 
