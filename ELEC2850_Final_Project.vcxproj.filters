@@ -23,5 +23,8 @@
     <ClInclude Include="..\..\Micro_Lab8\address_map_nios2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Micro_Lab8\nios2_ctrl_reg_macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
