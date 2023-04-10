@@ -41,7 +41,7 @@ int main() {
     //starting coordinates for left paddle
     short left_color = 0x1CE0;
     int left_x1 = 10;
-    int left_y1 = 124;
+    int left_y1 = 95;
     int left_x2 = left_x1 + 10 - 1;
     int left_y2 = left_y1 + 50 - 1;
 
@@ -65,6 +65,11 @@ int main() {
 
     //x inc, change in the x parameter per frame
     int ball_x_inc = 0;
+
+
+
+    char move = 'm';
+
 
     //create bar on top and bottom then set paddles and ball
     VGAbuild(0, 230, 320, 240, 0x808080);
@@ -106,6 +111,8 @@ int main() {
             else if (ballx2 > right_x1) {
                 right_score++;
             }
+
+
             if ((ballx1 == left_x2) && (bally1 >= left_y1) && (bally2 <= left_y2)) { //if ball hits left paddle
                 if ((ball_midpoint >= left_midpoint - 1) && (ball_midpoint <= left_midpoint + 2)) {
                     ball_inc_y = 0;
@@ -188,6 +195,30 @@ int main() {
             bally1 += ball_inc_y;
             bally2 += ball_inc_y;
 
+            scanf_s("%c", move);
+
+            if (ball_x_inc > 0) {
+                if (move == 'w') {
+                    right_y1 += 3;
+                    right_y2 += 3;
+                }
+                else if (move == 's') {
+                    right_y1 -= 3;
+                    right_y2 -= 3;
+                }
+                else {}
+            }
+            else {
+                if (move == 'w') {
+                    left_y1 += 3;
+                    left_y2 += 3;
+                }
+                else if (move == 's') {
+                    left_y1 -= 3;
+                    left_y2 -= 3;
+                }
+                else {}
+            }
 
 
             clearScreen();
@@ -240,6 +271,32 @@ int main() {
                 hex_val_1 = convert(score1);
                 *(sevSEG_ptr1) = hex_val_1;
 
+            }
+
+            if (end == 1) {
+
+                int ballx1 = 157;
+                int ballx2 = 163;
+                int bally1 = 117;
+                int bally2 = 123;
+
+                //starting coordinatres for right paddle
+
+                int right_x1 = 300;
+                int right_x2 = 310;
+                int right_y1 = 95;
+                int right_y2 = right_y1 + 50 - 1;
+
+                //starting coordinates for left paddle
+
+                int left_x1 = 10;
+                int left_y1 = 95;
+                int left_x2 = left_x1 + 10 - 1;
+                int left_y2 = left_y1 + 50 - 1;
+
+                ball_x_inc = 1;
+                ball_x_speed = 1;
+                ball_inc_y = 0;
             }
 
 
